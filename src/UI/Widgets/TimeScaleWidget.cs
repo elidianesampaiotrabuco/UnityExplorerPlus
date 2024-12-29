@@ -24,7 +24,11 @@ internal class TimeScaleWidget
     static TimeScaleWidget Instance;
 
     ButtonRef lockBtn;
+    ButtonRef dynamicBtn;
     bool locked;
+    bool dynamic;
+    float baseTimeScale;
+    Text timeLabel;
     InputFieldRef timeInput;
     float desiredTime;
     bool settingTimeScale;
@@ -36,12 +40,31 @@ internal class TimeScaleWidget
             SetTimeScale(desiredTime);
 
         if (!timeInput.Component.isFocused)
-            timeInput.Text = Time.timeScale.ToString("F2");
+            if (!dynamic)
+            {
+                timeLabel.text = $"Time:";
+                timeInput.Text = Time.timeScale.ToString("F2");
+            }
+            else
+            {
+                timeLabel.text = $"Time:(${Time.timeScale.ToString("F2")})";
+            }
     }
 
     void SetTimeScale(float time)
     {
         settingTimeScale = true;
+        if (dynamic)
+        {
+            if (time * desiredTime == baseTimeScale)
+            {
+                settingTimeScale = false;
+                return;
+            }
+
+            time = baseTimeScale * desiredTime;
+        }
+
         Time.timeScale = time;
         settingTimeScale = false;
     }
@@ -59,6 +82,11 @@ internal class TimeScaleWidget
 
     void OnPauseButtonClicked()
     {
+        if (dynamic)
+        {
+            OnDynamicButtonClicked();
+        }
+
         OnTimeInputEndEdit(timeInput.Text);
 
         locked = !locked;
@@ -68,11 +96,29 @@ internal class TimeScaleWidget
         lockBtn.ButtonText.text = locked ? "Unlock" : "Lock";
     }
 
+    void OnDynamicButtonClicked()
+    {
+        if (locked)
+        {
+            return;
+        }
+
+        baseTimeScale = Time.timeScale;
+
+        dynamic = !dynamic;
+
+        OnTimeInputEndEdit(timeInput.Text);
+
+        Color color = dynamic ? new Color(0.3f, 0.3f, 0.2f) : new Color(0.2f, 0.2f, 0.2f);
+        RuntimeHelper.SetColorBlock(lockBtn.Component, color, color * 1.2f, color * 0.7f);
+        lockBtn.ButtonText.text = dynamic ? "Dynamic" : "Normal";
+    }
+
     // UI Construction
 
     void ConstructUI(GameObject parent)
     {
-        Text timeLabel = UIFactory.CreateLabel(parent, "TimeLabel", "Time:", TextAnchor.MiddleRight, Color.grey);
+        timeLabel = UIFactory.CreateLabel(parent, "TimeLabel", "Time:", TextAnchor.MiddleRight, Color.grey);
         UIFactory.SetLayoutElement(timeLabel.gameObject, minHeight: 25, minWidth: 35);
 
         timeInput = UIFactory.CreateInputField(parent, "TimeInput", "timeScale");
@@ -85,6 +131,10 @@ internal class TimeScaleWidget
         lockBtn = UIFactory.CreateButton(parent, "PauseButton", "Lock", new Color(0.2f, 0.2f, 0.2f));
         UIFactory.SetLayoutElement(lockBtn.Component.gameObject, minHeight: 25, minWidth: 50);
         lockBtn.OnClick += OnPauseButtonClicked;
+
+        dynamicBtn = UIFactory.CreateButton(parent, "DynamicButton", "Dynamic", new Color(0.2f, 0.2f, 0.2f));
+        UIFactory.SetLayoutElement(dynamicBtn.Component.gameObject, minHeight: 25, minWidth: 50);
+        dynamicBtn.OnClick += OnDynamicButtonClicked;
     }
 
     // Only allow Time.timeScale to be set if the user hasn't "locked" it or if we are setting the value internally.
