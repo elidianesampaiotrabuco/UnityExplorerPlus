@@ -1,3 +1,5 @@
+# This has been discontinued, as most of the features were later backported to version 4.12.3.
+
 <p align="center">
   <img align="center" src="img/icon.png">
 </p>
