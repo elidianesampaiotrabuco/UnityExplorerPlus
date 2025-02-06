@@ -21,8 +21,8 @@ namespace UnityExplorer;
 public static class ExplorerCore
 {
     public const string NAME = "UnityExplorer";
-    public const string VERSION = "4.12.3";
-    public const string AUTHOR = "Sinai, yukieiji";
+    public const string VERSION = "4.14.0";
+    public const string AUTHOR = "Sinai, yukieiji, freddyguythe10th, ASTerisk";
     public const string GUID = "com.sinai.unityexplorer";
 
     public static IExplorerLoader Loader { get; private set; }
