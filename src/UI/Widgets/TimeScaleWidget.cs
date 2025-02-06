@@ -8,117 +8,22 @@ using IL2CPPUtils = UnhollowerBaseLib.UnhollowerUtils;
 using IL2CPPUtils = Il2CppInterop.Common.Il2CppInteropUtils;
 #endif
 
+#nullable enable
+
 namespace UnityExplorer.UI.Widgets;
 
 internal class TimeScaleWidget
 {
-    public TimeScaleWidget(GameObject parent)
+    public static TimeScaleWidget? Instance;
+
+    public static void SetUp(GameObject parent)
     {
-        Instance = this;
-
-        ConstructUI(parent);
-
-        InitPatch();
+        Instance = new TimeScaleWidget(parent);
     }
 
-    static TimeScaleWidget Instance;
-
-    ButtonRef lockBtn;
-    ButtonRef dynamicBtn;
-    bool locked;
-    bool dynamic;
-    float baseTimeScale;
-    Text timeLabel;
-    InputFieldRef timeInput;
-    float desiredTime;
-    bool settingTimeScale;
-
-    public void Update()
+    private TimeScaleWidget(GameObject parent)
     {
-        // Fallback in case Time.timeScale patch failed for whatever reason
-        if (locked)
-            SetTimeScale(desiredTime);
-
-        if (!timeInput.Component.isFocused)
-            if (!dynamic)
-            {
-                timeLabel.text = $"Time:";
-                timeInput.Text = Time.timeScale.ToString("F2");
-            }
-            else
-            {
-                timeLabel.text = $"Time:(${Time.timeScale.ToString("F2")})";
-            }
-    }
-
-    void SetTimeScale(float time)
-    {
-        settingTimeScale = true;
-        if (dynamic)
-        {
-            if (time * desiredTime == baseTimeScale)
-            {
-                settingTimeScale = false;
-                return;
-            }
-
-            time = baseTimeScale * desiredTime;
-        }
-
-        Time.timeScale = time;
-        settingTimeScale = false;
-    }
-
-    // UI event listeners
-
-    void OnTimeInputEndEdit(string val)
-    {
-        if (float.TryParse(val, out float f))
-        {
-            SetTimeScale(f);
-            desiredTime = f;
-        }
-    }
-
-    void OnPauseButtonClicked()
-    {
-        if (dynamic)
-        {
-            OnDynamicButtonClicked();
-        }
-
-        OnTimeInputEndEdit(timeInput.Text);
-
-        locked = !locked;
-
-        Color color = locked ? new Color(0.3f, 0.3f, 0.2f) : new Color(0.2f, 0.2f, 0.2f);
-        RuntimeHelper.SetColorBlock(lockBtn.Component, color, color * 1.2f, color * 0.7f);
-        lockBtn.ButtonText.text = locked ? "Unlock" : "Lock";
-    }
-
-    void OnDynamicButtonClicked()
-    {
-        if (locked)
-        {
-            return;
-        }
-
-        baseTimeScale = Time.timeScale;
-
-        dynamic = !dynamic;
-
-        OnTimeInputEndEdit(timeInput.Text);
-
-        Color color = dynamic ? new Color(0.3f, 0.3f, 0.2f) : new Color(0.2f, 0.2f, 0.2f);
-        RuntimeHelper.SetColorBlock(lockBtn.Component, color, color * 1.2f, color * 0.7f);
-        lockBtn.ButtonText.text = dynamic ? "Dynamic" : "Normal";
-    }
-
-    // UI Construction
-
-    void ConstructUI(GameObject parent)
-    {
-        timeLabel = UIFactory.CreateLabel(parent, "TimeLabel", "Time:", TextAnchor.MiddleRight, Color.grey);
+        Text timeLabel = UIFactory.CreateLabel(parent, "TimeLabel", "Time:", TextAnchor.MiddleRight, Color.grey);
         UIFactory.SetLayoutElement(timeLabel.gameObject, minHeight: 25, minWidth: 35);
 
         timeInput = UIFactory.CreateInputField(parent, "TimeInput", "timeScale");
@@ -131,10 +36,80 @@ internal class TimeScaleWidget
         lockBtn = UIFactory.CreateButton(parent, "PauseButton", "Lock", new Color(0.2f, 0.2f, 0.2f));
         UIFactory.SetLayoutElement(lockBtn.Component.gameObject, minHeight: 25, minWidth: 50);
         lockBtn.OnClick += OnPauseButtonClicked;
+    }
 
-        dynamicBtn = UIFactory.CreateButton(parent, "DynamicButton", "Dynamic", new Color(0.2f, 0.2f, 0.2f));
-        UIFactory.SetLayoutElement(dynamicBtn.Component.gameObject, minHeight: 25, minWidth: 50);
-        dynamicBtn.OnClick += OnDynamicButtonClicked;
+    public float DesiredTime { get; private set; }
+
+    private readonly InputFieldRef timeInput;
+    private readonly ButtonRef lockBtn;
+
+    private bool locked;
+    private bool settingTimeScale;
+
+    public void Update()
+    {
+        // Fallback in case Time.timeScale patch failed for whatever reason
+        if (locked)
+        {
+            UpdateTimeScale();
+        }
+
+        if (timeInput != null &&
+            !timeInput.Component.isFocused)
+        {
+            timeInput.Text = Time.timeScale.ToString("F2");
+        }
+    }
+
+    public void LockTo(float timeScale)
+    {
+        locked = true;
+        SetTimeScale(timeScale);
+        UpdateUi();
+    }
+
+    public void OnPauseButtonClicked()
+    {
+        if (timeInput == null)
+        {
+            return;
+        }
+
+        OnTimeInputEndEdit(timeInput.Text);
+
+        locked = !locked;
+
+        UpdateUi();
+    }
+
+    void UpdateTimeScale()
+    {
+        settingTimeScale = true;
+        Time.timeScale = DesiredTime;
+        settingTimeScale = false;
+    }
+
+    void SetTimeScale(float floatVal)
+    {
+        DesiredTime = floatVal;
+        UpdateTimeScale();
+    }
+
+    // UI event listeners
+
+    void OnTimeInputEndEdit(string val)
+    {
+        if (float.TryParse(val, out float f))
+        {
+            SetTimeScale(f);
+        }
+    }
+
+    void UpdateUi()
+    {
+        Color color = locked ? new Color(0.3f, 0.3f, 0.2f) : new Color(0.2f, 0.2f, 0.2f);
+        RuntimeHelper.SetColorBlock(lockBtn.Component, color, color * 1.2f, color * 0.7f);
+        lockBtn.ButtonText.text = locked ? "Unlock" : "Lock";
     }
 
     // Only allow Time.timeScale to be set if the user hasn't "locked" it or if we are setting the value internally.
@@ -144,10 +119,13 @@ internal class TimeScaleWidget
 
         try
         {
-            MethodInfo target = typeof(Time).GetProperty("timeScale").GetSetMethod();
+            MethodInfo? target = typeof(Time).GetProperty("timeScale")?.GetSetMethod();
 #if CPP
-            if (IL2CPPUtils.GetIl2CppMethodInfoPointerFieldForGeneratedMethod(target) == null)
+            if (target == null ||
+                IL2CPPUtils.GetIl2CppMethodInfoPointerFieldForGeneratedMethod(target) == null)
+            {
                 return;
+            }
 #endif
             ExplorerCore.Harmony.Patch(target,
                 prefix: new(AccessTools.Method(typeof(TimeScaleWidget), nameof(Prefix_Time_set_timeScale))));
@@ -159,7 +137,5 @@ internal class TimeScaleWidget
     }
 
     static bool Prefix_Time_set_timeScale()
-    {
-        return !Instance.locked || Instance.settingTimeScale;
-    }
+        => Instance == null || !Instance.locked || Instance.settingTimeScale;
 }
