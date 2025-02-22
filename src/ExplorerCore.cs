@@ -21,7 +21,7 @@ namespace UnityExplorer;
 public static class ExplorerCore
 {
     public const string NAME = "UnityExplorerPlus";
-    public const string VERSION = "1.1.0";
+    public const string VERSION = "1.1.0.1";
     public const string AUTHOR = "Sinai, yukieiji, freddyguythe10th, ASTerisk";
     public const string GUID = "com.asterisk.unityexplorerplus";
 
