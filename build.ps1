@@ -93,9 +93,9 @@ Remove-Item $Path/Iced.dll
 Remove-Item $Path/UnhollowerBaseLib.dll
 Remove-Item $Path/UnityExplorer.BIE.IL2CPP.pdb
 New-Item -Path "$Path" -Name "plugins" -ItemType "directory" -Force
-New-Item -Path "$Path" -Name "plugins/sinai-dev-UnityExplorer" -ItemType "directory" -Force
-Move-Item -Path $Path/UnityExplorer.BIE.IL2CPP.dll -Destination $Path/plugins/sinai-dev-UnityExplorer -Force
-Move-Item -Path $Path/UniverseLib.IL2CPP.Unhollower.dll -Destination $Path/plugins/sinai-dev-UnityExplorer -Force
+New-Item -Path "$Path" -Name "plugins/UnityExplorerPlus-v1.x" -ItemType "directory" -Force
+Move-Item -Path $Path/UnityExplorer.BIE.IL2CPP.dll -Destination $Path/plugins/UnityExplorerPlus-v1.x -Force
+Move-Item -Path $Path/UniverseLib.IL2CPP.Unhollower.dll -Destination $Path/plugins/UnityExplorerPlus-v1.x -Force
 # (create zip archive)
 Remove-Item $Path/../UnityExplorer.BepInEx.IL2CPP.zip -ErrorAction SilentlyContinue
 compress-archive .\$Path\* $Path/../UnityExplorer.BepInEx.IL2CPP.zip
@@ -115,9 +115,9 @@ Remove-Item $Path/Microsoft.Extensions.Logging.Abstractions.dll
 Remove-Item $Path/UnityExplorer.BIE.IL2CPP.CoreCLR.deps.json
 Remove-Item $Path/UnityExplorer.BIE.IL2CPP.CoreCLR.pdb
 New-Item -Path "$Path" -Name "plugins" -ItemType "directory" -Force
-New-Item -Path "$Path" -Name "plugins/sinai-dev-UnityExplorer" -ItemType "directory" -Force
-Move-Item -Path $Path/UnityExplorer.BIE.IL2CPP.CoreCLR.dll -Destination $Path/plugins/sinai-dev-UnityExplorer -Force
-Move-Item -Path $Path/UniverseLib.BIE.IL2CPP.Interop.dll -Destination $Path/plugins/sinai-dev-UnityExplorer -Force
+New-Item -Path "$Path" -Name "plugins/UnityExplorerPlus-v1.x" -ItemType "directory" -Force
+Move-Item -Path $Path/UnityExplorer.BIE.IL2CPP.CoreCLR.dll -Destination $Path/plugins/UnityExplorerPlus-v1.x -Force
+Move-Item -Path $Path/UniverseLib.BIE.IL2CPP.Interop.dll -Destination $Path/plugins/UnityExplorerPlus-v1.x -Force
 # (create zip archive)
 Remove-Item $Path/../UnityExplorer.BepInEx.IL2CPP.CoreCLR.zip -ErrorAction SilentlyContinue
 compress-archive .\$Path\* $Path/../UnityExplorer.BepInEx.IL2CPP.CoreCLR.zip
@@ -137,9 +137,9 @@ Remove-Item $Path/Microsoft.Extensions.Logging.Abstractions.dll
 Remove-Item $Path/UnityExplorer.BIE.Unity.IL2CPP.CoreCLR.deps.json
 Remove-Item $Path/UnityExplorer.BIE.Unity.IL2CPP.CoreCLR.pdb
 New-Item -Path "$Path" -Name "plugins" -ItemType "directory" -Force
-New-Item -Path "$Path" -Name "plugins/sinai-dev-UnityExplorer" -ItemType "directory" -Force
-Move-Item -Path $Path/UnityExplorer.BIE.Unity.IL2CPP.CoreCLR.dll -Destination $Path/plugins/sinai-dev-UnityExplorer -Force
-Move-Item -Path $Path/UniverseLib.BIE.IL2CPP.Interop.dll -Destination $Path/plugins/sinai-dev-UnityExplorer -Force
+New-Item -Path "$Path" -Name "plugins/UnityExplorerPlus-v1.x" -ItemType "directory" -Force
+Move-Item -Path $Path/UnityExplorer.BIE.Unity.IL2CPP.CoreCLR.dll -Destination $Path/plugins/UnityExplorerPlus-v1.x -Force
+Move-Item -Path $Path/UniverseLib.BIE.IL2CPP.Interop.dll -Destination $Path/plugins/UnityExplorerPlus-v1.x -Force
 # (create zip archive)
 Remove-Item $Path/../UnityExplorer.BepInEx.Unity.IL2CPP.CoreCLR.zip -ErrorAction SilentlyContinue
 compress-archive .\$Path\* $Path/../UnityExplorer.BepInEx.Unity.IL2CPP.CoreCLR.zip
@@ -154,9 +154,9 @@ Remove-Item $Path/Tomlet.dll
 Remove-Item $Path/mcs.dll
 Remove-Item $Path/UnityExplorer.BIE5.Mono.pdb
 New-Item -Path "$Path" -Name "plugins" -ItemType "directory" -Force
-New-Item -Path "$Path" -Name "plugins/sinai-dev-UnityExplorer" -ItemType "directory" -Force
-Move-Item -Path $Path/UnityExplorer.BIE5.Mono.dll -Destination $Path/plugins/sinai-dev-UnityExplorer -Force
-Move-Item -Path $Path/UniverseLib.Mono.dll -Destination $Path/plugins/sinai-dev-UnityExplorer -Force
+New-Item -Path "$Path" -Name "plugins/UnityExplorerPlus-v1.x" -ItemType "directory" -Force
+Move-Item -Path $Path/UnityExplorer.BIE5.Mono.dll -Destination $Path/plugins/UnityExplorerPlus-v1.x -Force
+Move-Item -Path $Path/UniverseLib.Mono.dll -Destination $Path/plugins/UnityExplorerPlus-v1.x -Force
 # (create zip archive)
 Remove-Item $Path/../UnityExplorer.BepInEx5.Mono.zip -ErrorAction SilentlyContinue
 compress-archive .\$Path\* $Path/../UnityExplorer.BepInEx5.Mono.zip
@@ -171,9 +171,9 @@ Remove-Item $Path/Tomlet.dll
 Remove-Item $Path/mcs.dll
 Remove-Item $Path/UnityExplorer.BIE6.Mono.pdb
 New-Item -Path "$Path" -Name "plugins" -ItemType "directory" -Force
-New-Item -Path "$Path" -Name "plugins/sinai-dev-UnityExplorer" -ItemType "directory" -Force
-Move-Item -Path $Path/UnityExplorer.BIE6.Mono.dll -Destination $Path/plugins/sinai-dev-UnityExplorer -Force
-Move-Item -Path $Path/UniverseLib.Mono.dll -Destination $Path/plugins/sinai-dev-UnityExplorer -Force
+New-Item -Path "$Path" -Name "plugins/UnityExplorerPlus-v1.x" -ItemType "directory" -Force
+Move-Item -Path $Path/UnityExplorer.BIE6.Mono.dll -Destination $Path/plugins/UnityExplorerPlus-v1.x -Force
+Move-Item -Path $Path/UniverseLib.Mono.dll -Destination $Path/plugins/UnityExplorerPlus-v1.x -Force
 # (create zip archive)
 Remove-Item $Path/../UnityExplorer.BepInEx6.Mono.zip -ErrorAction SilentlyContinue
 compress-archive .\$Path\* $Path/../UnityExplorer.BepInEx6.Mono.zip
@@ -188,9 +188,9 @@ Remove-Item $Path/Tomlet.dll
 Remove-Item $Path/mcs.dll
 Remove-Item $Path/UnityExplorer.BIE6.Unity.Mono.pdb
 New-Item -Path "$Path" -Name "plugins" -ItemType "directory" -Force
-New-Item -Path "$Path" -Name "plugins/sinai-dev-UnityExplorer" -ItemType "directory" -Force
-Move-Item -Path $Path/UnityExplorer.BIE6.Unity.Mono.dll -Destination $Path/plugins/sinai-dev-UnityExplorer -Force
-Move-Item -Path $Path/UniverseLib.Mono.dll -Destination $Path/plugins/sinai-dev-UnityExplorer -Force
+New-Item -Path "$Path" -Name "plugins/UnityExplorerPlus-v1.x" -ItemType "directory" -Force
+Move-Item -Path $Path/UnityExplorer.BIE6.Unity.Mono.dll -Destination $Path/plugins/UnityExplorerPlus-v1.x -Force
+Move-Item -Path $Path/UniverseLib.Mono.dll -Destination $Path/plugins/UnityExplorerPlus-v1.x -Force
 # (create zip archive)
 Remove-Item $Path/../UnityExplorer.BepInEx6.Unity.Mono.zip -ErrorAction SilentlyContinue
 compress-archive .\$Path\* $Path/../UnityExplorer.BepInEx6.Unity.Mono.zip

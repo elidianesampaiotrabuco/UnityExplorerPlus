@@ -21,13 +21,13 @@ namespace UnityExplorer;
 public static class ExplorerCore
 {
     public const string NAME = "UnityExplorerPlus";
-    public const string VERSION = "1.0.0";
+    public const string VERSION = "1.1.0";
     public const string AUTHOR = "Sinai, yukieiji, freddyguythe10th, ASTerisk";
     public const string GUID = "com.asterisk.unityexplorerplus";
 
     public static IExplorerLoader Loader { get; private set; }
     public static string ExplorerFolder => Path.Combine(Loader.ExplorerFolderDestination, Loader.ExplorerFolderName);
-    public const string DEFAULT_EXPLORER_FOLDER_NAME = "sinai-dev-UnityExplorer";
+    public const string DEFAULT_EXPLORER_FOLDER_NAME = "UnityExplorerPlus-v1.x";
 
     public static HarmonyPatch Harmony { get; } = new HarmonyPatch(GUID);
 

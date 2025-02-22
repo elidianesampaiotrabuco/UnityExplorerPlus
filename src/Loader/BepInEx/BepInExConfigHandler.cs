@@ -8,7 +8,7 @@ namespace UnityExplorer.Loader.BIE
     {
         private ConfigFile Config => ExplorerBepInPlugin.Instance.Config;
 
-        private const string CTG_NAME = "UnityExplorer";
+        private const string CTG_NAME = "UnityExplorerPlus";
 
         public override void Init()
         {
