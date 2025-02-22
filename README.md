@@ -6,40 +6,40 @@
   🔍 An in-game UI for exploring, debugging and modifying Unity games.
 </p>
 <p align="center">
-  ✔️ Supports most Unity versions from 5.2 to 2021+ (IL2CPP and Mono).
+  ✔️ Supports most Unity versions from 5.2 to 6.0+ (IL2CPP and Mono).
 </p>
 <p align="center">
   ✨ Powered by <a href="https://github.com/yukieiji/UniverseLib">UniverseLib</a><br>
   🛠️ This is fork of <a href="https://github.com/sinai-dev/UnityExplorer">UnityExplorer</a> maintained by yukieiji<br>
+  ➕ Another fork of UnityExplorer also exists, called UnityExplorer+
 </p>
 
-## Changes from original 
-- Bug fixes due to continued development
-  - Il2CPP and Mono support for BepInEx 6.x be.647+([DL:Il2CPP](https://github.com/yukieiji/UnityExplorer/releases/latest/download/UnityExplorer.BepInEx.Unity.IL2CPP.CoreCLR.zip)/[DL:Mono](https://github.com/yukieiji/UnityExplorer/releases/latest/download/UnityExplorer.BepInEx6.Unity.Mono.zip))
-  - Compatible with MelonLoader 0.6.x(OpenBeta) or later([DL](https://github.com/yukieiji/UnityExplorer/releases/latest/download/UnityExplorer.MelonLoader.IL2CPP.CoreCLR.zip))
-  - and etc..
--  Stabilize overall performance by adjusting project settings, etc.
+## Changes from yukieiji's fork
+- Reworked the clipboard
+- Bugfixes and tweaks
+- And even more stuff!
 
-If there are any bugs or features you want, please create a [ticket](https://github.com/yukieiji/UnityExplorer/issues/new/choose)!
+If there are any bugs or features you want, please create a [ticket](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/issues/new/choose)!
 
-# Releases  [![](https://img.shields.io/github/downloads/sinai-dev/UnityExplorer/total.svg)](../../releases)
+# Releases  [![](https://img.shields.io/github/downloads/elidianesampaiotrabuco/UnityExplorerPlus/total)](../../releases)
 
-[![](https://img.shields.io/github/release/yukieiji/UnityExplorer.svg?label=version)](../../releases/latest) [![](https://img.shields.io/github/workflow/status/yukieiji/UnityExplorer/Build%20UnityExplorer)](https://github.com/yukieiji/UnityExplorer/actions) [![](https://img.shields.io/github/downloads/yukieiji/UnityExplorer/latest/total.svg)](../../releases/latest)
+[![](https://img.shields.io/github/v/release/elidianesampaiotrabuco/UnityExplorerPlus?include_prereleases)](../../releases/latest) [![](https://img.shields.io/github/actions/workflow/status/elidianesampaiotrabuco/UnityExplorerPlus/dotnet.yml
+)](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/actions) [![](https://img.shields.io/github/downloads/elidianesampaiotrabuco/UnityExplorerPlus/latest/total)](../../releases/latest)
 
 
 ## Release schedule
 
 Releases will be posted at most once per week, generally on weekends. 
 
-Nightly builds can be found [here](https://github.com/yukieiji/UnityExplorer/actions).
+Nightly builds can be found [here](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/actions).
 
 ## BepInEx
 
 | Release | IL2CPP(Il2CppInterop) | IL2CPP(Unhollower) | Mono |
 | ------- | ------ |  ------ | ---- |
-| BIE 6.X be.647+ or BIE 6.0-pre.2+ | ✅ [link](https://github.com/yukieiji/UnityExplorer/releases/latest/download/UnityExplorer.BepInEx.Unity.IL2CPP.CoreCLR.zip) | ✖️ n/a | ✅ [link](https://github.com/yukieiji/UnityExplorer/releases/latest/download/UnityExplorer.BepInEx6.Unity.Mono.zip) |
-| BIE 6.X be.472 to be.577 or BIE 6.0-pre.1(**NOT pre.2**) | ✅ [link](https://github.com/yukieiji/UnityExplorer/releases/latest/download/UnityExplorer.BepInEx.IL2CPP.CoreCLR.zip) | ✅ [link](https://github.com/yukieiji/UnityExplorer/releases/latest/download/UnityExplorer.BepInEx.IL2CPP.zip)  | ✅ [link](https://github.com/yukieiji/UnityExplorer/releases/latest/download/UnityExplorer.BepInEx6.Mono.zip) |
-| BIE 5.X | ✖️ n/a |  ✖️ n/a |  ✅ [link](https://github.com/yukieiji/UnityExplorer/releases/latest/download/UnityExplorer.BepInEx5.Mono.zip) |
+| BIE 6.X be.647+ or BIE 6.0-pre.2+ | ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/releases/latest/download/UnityExplorer.BepInEx.Unity.IL2CPP.CoreCLR.zip) | ✖️ n/a | ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/releases/latest/download/UnityExplorer.BepInEx6.Unity.Mono.zip) |
+| BIE 6.X be.472 to be.577 or BIE 6.0-pre.1(**NOT pre.2**) | ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/releases/latest/download/UnityExplorer.BepInEx.IL2CPP.CoreCLR.zip) | ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/releases/latest/download/UnityExplorer.BepInEx.IL2CPP.zip)  | ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/releases/latest/download/UnityExplorer.BepInEx6.Mono.zip) |
+| BIE 5.X | ✖️ n/a |  ✖️ n/a |  ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/releases/latest/download/UnityExplorer.BepInEx5.Mono.zip) |
 
 1. Unzip the release file into a folder
 2. Take the `plugins/sinai-dev-UnityExplorer` folder and place it in `BepInEx/plugins/`
@@ -50,9 +50,9 @@ Nightly builds can be found [here](https://github.com/yukieiji/UnityExplorer/act
 
 | Release | IL2CPP | Mono |
 | ------- | ------ | ---- |
-| ML 0.6.x  | ✅ [link](https://github.com/yukieiji/UnityExplorer/releases/latest/download/UnityExplorer.MelonLoader.IL2CPP.CoreCLR.zip) | ✖️ |
-| ML 0.6(only alpha build)  | ✅ [link](https://github.com/yukieiji/UnityExplorer/releases/latest/download/UnityExplorer.MelonLoader.IL2CPP.net6preview.zip) | ✖️ |
-| ML 0.5  | ✅ [link](https://github.com/yukieiji/UnityExplorer/releases/latest/download/UnityExplorer.MelonLoader.IL2CPP.zip) | ✅ [link](https://github.com/yukieiji/UnityExplorer/releases/latest/download/UnityExplorer.MelonLoader.Mono.zip) | 
+| ML 0.6.x/0.7.x  | ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/releases/latest/download/UnityExplorer.MelonLoader.IL2CPP.CoreCLR.zip) | ✖️ n/a |
+| ML 0.6(only alpha build)  | ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/releases/latest/download/UnityExplorer.MelonLoader.IL2CPP.net6preview.zip) | ✖️ n/a |
+| ML 0.5  | ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/releases/latest/download/UnityExplorer.MelonLoader.IL2CPP.zip) | ✅ [link](https://github.com/yukieiji/UnityExplorer/releases/latest/download/UnityExplorer.MelonLoader.Mono.zip) | 
 
 1. Unzip the release file into a folder
 2. Copy the DLL inside the `Mods` folder into your MelonLoader `Mods` folder
@@ -62,7 +62,7 @@ Nightly builds can be found [here](https://github.com/yukieiji/UnityExplorer/act
 
 | Il2CppInterop | Unhollower | Mono |
 | ------ | ------ | ---- |
-| ✅ [link](https://github.com/yukieiji/UnityExplorer/releases/latest/download/UnityExplorer.Standalone.IL2CPP.CoreCLR.zip)| ✅ [link](https://github.com/yukieiji/UnityExplorer/releases/latest/download/UnityExplorer.Standalone.IL2CPP.zip) | ✅ [link](https://github.com/yukieiji/UnityExplorer/releases/latest/download/UnityExplorer.Standalone.Mono.zip) | 
+| ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/releases/latest/download/UnityExplorer.Standalone.IL2CPP.CoreCLR.zip)| ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/releases/latest/download/UnityExplorer.Standalone.IL2CPP.zip) | ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/releases/latest/download/UnityExplorer.Standalone.Mono.zip) | 
 
 The standalone release can be used with any injector or loader of your choice, but it requires you to load the dependencies manually.
 
@@ -83,7 +83,7 @@ The standalone release can be used with any injector or loader of your choice, b
 Although UnityExplorer should work out of the box for most Unity games, in some cases you may need to tweak the settings for it to work properly.
 
 To adjust the settings, open the config file:
-* BepInEx: `BepInEx\config\com.sinai.unityexplorer.cfg`
+* BepInEx: `BepInEx\config\com.asterisk.unityexplorerplus.cfg`
 * MelonLoader: `UserData\MelonPreferences.cfg`
 * Standalone: `sinai-dev-UnityExplorer\config.cfg`
 
