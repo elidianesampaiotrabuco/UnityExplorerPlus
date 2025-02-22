@@ -19,7 +19,7 @@ using BepInEx.Unity.Mono;
 
 namespace UnityExplorer
 {
-    [BepInPlugin(ExplorerCore.GUID, "UnityExplorer", ExplorerCore.VERSION)]
+    [BepInPlugin(ExplorerCore.GUID, "UnityExplorerPlus", ExplorerCore.VERSION)]
 
     public class ExplorerBepInPlugin :
 #if MONO
