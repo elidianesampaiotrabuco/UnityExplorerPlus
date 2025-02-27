@@ -15,7 +15,7 @@
 </p>
 
 ## Changes from yukieiji's fork
-- Reworked the clipboard
+- Reworked the clipboard (buggy)
 - Bugfixes and tweaks
 - And even more stuff!
 
