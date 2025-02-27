@@ -52,7 +52,7 @@ Nightly builds can be found [here](https://github.com/elidianesampaiotrabuco/Uni
 | ------- | ------ | ---- |
 | ML 0.6.x/0.7.x  | ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/releases/latest/download/UnityExplorer.MelonLoader.IL2CPP.CoreCLR.zip) | ✖️ n/a |
 | ML 0.6(only alpha build)  | ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/releases/latest/download/UnityExplorer.MelonLoader.IL2CPP.net6preview.zip) | ✖️ n/a |
-| ML 0.5  | ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/releases/latest/download/UnityExplorer.MelonLoader.IL2CPP.zip) | ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorer/releases/latest/download/UnityExplorer.MelonLoader.Mono.zip) | 
+| ML 0.5  | ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/releases/latest/download/UnityExplorer.MelonLoader.IL2CPP.zip) | ✅ [link](https://github.com/elidianesampaiotrabuco/UnityExplorerPlus/releases/latest/download/UnityExplorer.MelonLoader.Mono.zip) | 
 
 1. Unzip the release file into a folder
 2. Copy the DLL inside the `Mods` folder into your MelonLoader `Mods` folder
