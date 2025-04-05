@@ -1,4 +1,4 @@
-<!-- uep 2.x soon -->
+<!-- this repo will be archived once ue+ 2.0 releases -->
 
 <p align="center">
   <img align="center" src="img/icon.png">
