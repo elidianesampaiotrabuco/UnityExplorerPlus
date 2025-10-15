@@ -22,7 +22,7 @@ public static class ExplorerCore
 {
     public const string NAME = "UnityExplorerPlus";
     public const string VERSION = "1.1.0.2";
-    public const string AUTHOR = "Sinai, yukieiji, freddyguythe10th, ASTerisk";
+    public const string AUTHOR = "Sinai, yukieiji, freddyguythe10th, MSVEC1024 QHD";
     public const string GUID = "com.asterisk.unityexplorerplus";
 
     public static IExplorerLoader Loader { get; private set; }
